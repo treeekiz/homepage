@@ -1,4 +1,18 @@
 <!DOCTYPE html>
+<html>
+<head>
+ <script>
+ function playSound() {
+ var audioElement = document.createElement('audio');
+ audioElement.setAttribute('src', 'notify.mp3');
+ audioElement.play();
+ }
+ </script>
+</head>
+<body>
+ <button onclick="playSound()">Проиграть звук</button>
+</body>
+</html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
