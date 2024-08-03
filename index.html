@@ -5,176 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1337</title>
     <link rel="icon" href="materials/knife.ico" type="image/x-icon"/>
-    <style>
+     <style>
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
-            position: relative;
-            background-image: url(materials/pinterestdownloader.com-1722660680.597079.gif); /* Path to your GIF file (local) */
-            background-size: cover; /* Ensures the GIF covers the whole area */
-            background-position: center; /* Centers the GIF */
-            background-repeat: no-repeat; /* Prevents repeating the GIF */
-            text-align: center;
-        }
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
-            z-index: 1; /* Ensures it’s on top of the background but behind content */
-        }
-        .avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-            background-color: #ddd; /* Fallback color for no image */
-            z-index: 2; /* Ensure it’s above the overlay */
-        }
-        .name {
-            font-size: 24px;
-            color: #fff;
-            margin: 10px 0;
-            z-index: 2; /* Ensure it’s above the overlay */
-        }
-        .bio {
-            font-size: 16px;
-            color: #fff;
-            margin-bottom: 20px;
-            z-index: 2; /* Ensure it’s above the overlay */
-        }
-        .button-container {
-            display: flex;
-            flex-direction: row; /* Stack buttons vertically */
-            align-items: center;
-            gap: 7px;
-            z-index: 2; /* Ensure it’s above the overlay */
-        }
-        .button, .button2, .copy-button {
-            background-color: #0c0c0d;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
             overflow: hidden;
-            z-index: 2; /* Ensure it’s above the overlay */
+            background-image: url('background.png'); /* Поставьте путь к вашему изображению фона */
+            background-size: cover;
+            height: 100vh;
+            transition: filter 0.5s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
         }
-        .button img, .copy-button img {
-            width: 28px;
-            height: 20px;
-            margin-right: 8px;
+
+        .blur {
+            filter: blur(8px);
         }
-        .button2 img {
-            width: 20px;
-            height: 20px;
-            margin-right: 8px;
+        
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            transition: background-color 0.3s;
+            position: relative;
+            z-index: 1; /* Помещаем кнопку выше, чем фон */
         }
-        .button:hover, .button2:hover, .copy-button:hover {
-            background-color: #660707;
-        }
-        .button:focus, .button2:hover, .copy-button:focus {
-            outline: none;
-        }
-        /* Media query for mobile devices */
-        @media (max-width: 768px) {
-            .avatar {
-                width: 160px;
-                height: 160px;
-            }
-            .name {
-                font-size: 40px;
-            }
-            .bio {
-                font-size: 16px;
-            }
-            .button, .button2, .copy-button {
-                font-size: 28px;
-                padding: 8px 16px;
-            }
-            .button img, .copy-button img {
-                width: 24px;
-                height: 16px;
-            }
-            .button2 img {
-                width: 16px;
-                height: 16px;
-            }
-            .button-container {
-                flex-direction: column; /* Stack buttons vertically on smaller screens */
-                gap: 4px;
-            }
-        }
-        /* Additional media query for very small screens */
-        @media (max-width: 480px) {
-            .avatar {
-                width: 120px;
-                height: 120px;
-            }
-            .name {
-                font-size: 36px;
-            }
-            .bio {
-                font-size: 16px;
-            }
-            .button, .button2, .copy-button {
-                font-size: 24px;
-                padding: 6px 12px;
-            }
-            .button img, .copy-button img {
-                width: 20px;
-                height: 14px;
-            }
-            .button2 img {
-                width: 14px;
-                height: 14px;
-            }
+
+        button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <img src="materials\avatar.png" alt="Avatar" class="avatar">
-    <div class="name">destroyew1337</div>
-    <div class="bio"></div>
-    <div class="button-container">
-        <a class="copy-button" onclick="copyToClipboard('@autowall1337')">
-            <img src="materials\discord.png" alt="Discord">Copy Discord
-        </a>
-        <a href="https://t.me/arbuzroleplay" class="button2">
-            <img src="materials\telegram.png" alt="Telegram">Telegram
-        </a>
-        <a href="https://www.youtube.com/channel/UC_0szGZqABH35H8NS5Azzcw" class="button">
-            <img src="materials\youtube.png" alt="YouTube">YouTube
-        </a>   
-        <a href="https://steamcommunity.com/id/-foz" class="button2">
-            <img src="materials\steam.png" alt="Steam">Steam
-        </a>        
-    </div>
+    <button id="myButton">Нажмите меня!</button>
+
+    <audio id="myAudio" src="musicc.mp3" preload="auto"></audio> <!-- Замените на URL вашей музыки -->
 
     <script>
-        function copyToClipboard(text) {
-            const tempInput = document.createElement('input');
-            tempInput.value = text;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
-            alert('Copied to clipboard!');
-        }
+        document.getElementById("myButton").onclick = function() {
+            // Размываем фон
+            document.body.classList.add("blur"); 
+            // Воспроизводим музыку
+            document.getElementById("myAudio").play();
+            // Убираем блюр через 3 секунды
+            setTimeout(function() {
+                document.body.classList.remove("blur");
+            }, 3000); // Измените время на нужное вам
+        };
     </script>
 </body>
 </html>
